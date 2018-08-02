@@ -3,8 +3,8 @@ package com.company;
 import java.util.stream.Stream;
 
 public class Wall {
-    public int Xaxis;
-    public int Yaxis;
+    private int Xaxis;
+    private int Yaxis;
 
     public Wall (int x, int y) {
         this.Xaxis = x;

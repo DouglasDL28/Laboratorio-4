@@ -1,8 +1,8 @@
 package com.company;
 
 public class Robot {
-    public int Xaxis;
-    public int Yaxis;
+    private int Xaxis;
+    private int Yaxis;
     private int Direccion;
     private int Beepers;
 
@@ -12,13 +12,14 @@ public class Robot {
         this.Direccion = direccion;
     }
 
+
     public void Rotate() {
         this.Direccion = (this.Direccion + 1) % 4;
     }
 
     public boolean Move() {
         if (this.Direccion == 0) {
-            this.Xaxis -= 1;
+            this.Yaxis -= 1;
             return true;
 
         } else if (this.Direccion == 1) {
