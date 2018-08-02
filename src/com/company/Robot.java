@@ -1,10 +1,10 @@
 package com.company;
 
 public class Robot {
-    public static final int Up = 0;
-    public static final int Right = 1;
-    public static final int Down = 2;
-    public static final int Left = 3;
+    private static final int Up = 0;
+    private static final int Right = 1;
+    private static final int Down = 2;
+    private static final int Left = 3;
     private int Xaxis;
     private int Yaxis;
     private int Direction;

@@ -7,12 +7,15 @@ public class Map {
     private int Lenght;
     private ArrayList<Wall> walls;
     private ArrayList<Beepers> beepers;
-    private Robot robot;
+    public Robot robot;
 
     public Map(int height, int lenght) {
-        Height = height;
-        Lenght = lenght;
+        this.Height = height;
+        this.Lenght = lenght;
+        this.walls = new ArrayList<>();
+        this. beepers = new ArrayList<>();
     }
+
 
     public void addWall(Wall wall) {
         this.walls.add(wall);
@@ -25,15 +28,6 @@ public class Map {
     public void addRobot(Robot robot) {
         this.robot = robot;
     }
-
-//    public boolean executeMove() {
-//        for (int i = 0; i < this.walls.size(); i++) {
-//            if ((this.walls[i].Xaxis == this.robot.Xaxis) && (this.walls[i].Yaxis == this.robot.Yaxis)) {
-//                this.robot.Move()
-//                return true;
-//            }
-//            return false;
-//        }
 
 
     @Override

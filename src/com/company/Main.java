@@ -16,75 +16,97 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
+        //Pedir archivo del mapa.
         System.out.println("Ingrese el archivo de texto del mapa: ");
         String archivo = input.nextLine();
 
+        ArrayList<String> linesList = new ArrayList<>();
+
         try {
-            Stream<String> lines = Files. lines(
+            Stream<String> lines = Files.lines(
                     Paths.get(archivo),
                     StandardCharsets.UTF_8
             );
+            lines.forEach(line -> linesList.add(line));
 
 
-            int lenght = lines.findFirst().get().length();
-            int height = 0;
-            lines.forEach(y -> height += 1);
+        } catch (IOException exception) {
+            System.out.println("Error!");
+        }
 
-            Map newMap = new Map(height, lenght);
+        int height = linesList.size();
+        int lenght = linesList.get(1).length();
+
+        Map newMap = new Map(height, lenght);
 
             AtomicInteger counter = new AtomicInteger();
 
-            lines.forEach(y -> {
+            linesList.forEach(y -> {
                 int Ycounter = counter.getAndIncrement();
-                for (int x =0; x < y.length(); x++) {
+                for (int x = 0; x < y.length(); x++) {
 
-                    String Character = y.substring(x ,x + 1);
+                    String Character = y.substring(x, x + 1);
                     switch (Character) {
                         case "^":
-                            newMap.addRobot(new Robot (x, Ycounter, 0));
+                            newMap.addRobot(new Robot(x, Ycounter, 0));
                             break;
 
                         case ">":
-                            newMap.addRobot(new Robot (x, Ycounter, 1));
+                            newMap.addRobot(new Robot(x, Ycounter, 1));
                             break;
 
                         case "v":
-                            newMap.addRobot(new Robot (x, Ycounter, 2));
+                            newMap.addRobot(new Robot(x, Ycounter, 2));
                             break;
 
                         case "<":
-                            newMap.addRobot(new Robot (x, Ycounter, 3));
+                            newMap.addRobot(new Robot(x, Ycounter, 3));
                             break;
 
                         case "*":
-                            newMap.addWall(new Wall (x, Ycounter));
-
+                            newMap.addWall(new Wall(x, Ycounter));
                     }
                 }
             });
 
 
-        } catch (IOException exception) {
-            System.out.println("Error!");
-        }
-
+        //Pedir instrucciones
         System.out.print("Ingrese el archivo de instrucciones: ");
-        String instrucciones = input.nextLine();
+        String instructions = input.nextLine();
+
+        ArrayList<String> instructionsList = new ArrayList<>();
+
 
         try {
-            Stream<String> lines = Files. lines(
-                    Paths.get(archivo),
+            Stream<String> line = Files.lines(
+                    Paths.get(instructions),
                     StandardCharsets.UTF_8
             );
 
-            lines.forEach(command -> System.out.printf(command));
+            line.forEach(command -> instructionsList.add(command));
 
-            lines.forEach(command -> {});
         } catch (IOException exception) {
             System.out.println("Error!");
         }
 
+        for (int x = 0; x < instructionsList.size(); x++) {
+            switch (instructionsList.get(x)){
+                case "MOVE":
+                    newMap.robot.Move();
+                    break;
 
+                case "ROTATE":
+                    newMap.robot.Rotate();
+                    break;
 
+                case "PICK":
+                    newMap.robot.Pick();
+                    break;
+            }
+        }
     }
+
+
 }
+
+
