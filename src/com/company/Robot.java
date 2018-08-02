@@ -1,40 +1,39 @@
 package com.company;
 
 public class Robot {
+    public static final int Up = 0;
+    public static final int Right = 1;
+    public static final int Down = 2;
+    public static final int Left = 3;
     private int Xaxis;
     private int Yaxis;
-    private int Direccion;
+    private int Direction;
     private int Beepers;
 
     public Robot(int xaxis, int yaxis, int direccion) {
         this.Xaxis = xaxis;
         this.Yaxis = yaxis;
-        this.Direccion = direccion;
+        this.Direction = direccion;
     }
 
 
     public void Rotate() {
-        this.Direccion = (this.Direccion + 1) % 4;
+        this.Direction = (this.Direction + 1) % 4;
     }
 
-    public boolean Move() {
-        if (this.Direccion == 0) {
+    public void Move() {
+        if (this.Direction == Up) {
             this.Yaxis -= 1;
-            return true;
 
-        } else if (this.Direccion == 1) {
+        } else if (this.Direction == Right) {
             this.Xaxis += 1;
-            return true;
 
-        } else if (this.Direccion == 2) {
+        } else if (this.Direction == Down) {
             this.Yaxis += 1;
-            return true;
 
-        } else if (this.Direccion == 3) {
+        } else if (this.Direction == Left) {
             this.Xaxis -= 1;
-            return true;
         }
-        return false;
     }
 
     public void Pick () { this.Beepers += 1;}
@@ -42,13 +41,13 @@ public class Robot {
     @Override
     public String toString() {
         String str = "";
-        if (this.Direccion == 0) {
+        if (this.Direction == 0) {
             str = "^";
-        } else if (this.Direccion == 1) {
+        } else if (this.Direction == 1) {
             str = ">";
-        } else if (this.Direccion == 2) {
+        } else if (this.Direction == 2) {
             str = "v";
-        } else if (this.Direccion == 3) {
+        } else if (this.Direction == 3) {
             str = "<";
         }
         return str;
