@@ -32,6 +32,6 @@ public class Map {
 
     @Override
     public String toString(){
-        return "";
+        return this.walls.toString() + this.robot.toString() + this.beepers.toString();
     }
 }

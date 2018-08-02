@@ -93,17 +93,22 @@ public class Main {
             switch (instructionsList.get(x)){
                 case "MOVE":
                     newMap.robot.Move();
+                    System.out.println(newMap);
                     break;
 
                 case "ROTATE":
                     newMap.robot.Rotate();
+                    System.out.println(newMap);
                     break;
 
                 case "PICK":
                     newMap.robot.Pick();
+                    System.out.println(newMap);
                     break;
             }
         }
+
+
     }
 
 
